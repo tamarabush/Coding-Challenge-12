@@ -55,3 +55,33 @@ function drawShape(x, y) {
     }
     ctx.stroke();
 }
+
+
+
+//TASK 3 - Implement Shape Drawing Logic:
+ 
+function drawShape(x, y) {
+    ctx.strokeStyle = color; //set the color for the shape outline
+    ctx.clearRect(0, 0, canvas.width, canvas.height); //clear canvas for smoother drawing
+    ctx.beginPath();
+    
+    //determine which shape to draw based on the selected tool using case/break/switch
+    switch (tool) {
+        case 'line':
+            //draw a line from the starting point to the current mouse position
+            ctx.moveTo(startX, startY);
+            ctx.lineTo(x, y);
+            break;
+        case 'rectangle':
+            //draw a rectangle from the starting point to the current mouse position
+            ctx.rect(startX, startY, x - startX, y - startY);
+            break;
+        case 'circle':
+            //calculate the radius based on the distance between the starting and current position
+            const radius = Math.hypot(x - startX, y - startY); 
+            ctx.arc(startX, startY, radius, 0, 2 * Math.PI);
+            break;
+    }
+    
+    ctx.stroke(); // Draw the selected shape
+}
