@@ -85,3 +85,12 @@ function drawShape(x, y) {
     
     ctx.stroke(); // Draw the selected shape
 }
+
+
+
+//TASK 4 - Add Color Selection and Canvas Clearing
+
+//clear canvas functionality
+document.getElementById('clearCanvas').addEventListener('click', () => {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+});
